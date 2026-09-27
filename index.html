@@ -9,12 +9,44 @@
     <meta property="og:description" content="A clean retro-styled mathematics practice and mock test reviewer covering transformations, trigonometry, inequalities, absolute value, and statistics." />
     <meta property="og:type" content="website" />
     <meta name="twitter:card" content="summary_large_image" />
+
+    <!-- Trailing slash normalizer for GitHub Pages -->
+    <script>
+      (function() {
+        var p = window.location.pathname;
+        if (p.length > 1 && !p.endsWith('/') && p.split('/').pop().indexOf('.') === -1) {
+          window.location.replace(p + '/' + window.location.search + window.location.hash);
+        }
+      })();
+    </script>
+
+    <!-- Theme initialization to prevent flash -->
+    <script>
+      (function() {
+        try {
+          var t = localStorage.getItem('math_reviewer_theme');
+          var isDark = t === 'dark' || (!t && window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches);
+          if (isDark) {
+            document.documentElement.classList.add('dark');
+          }
+        } catch (e) {}
+      })();
+    </script>
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Courier+Prime:ital,wght@0,400;0,700;1,400&family=IBM+Plex+Mono:ital,wght@0,400;0,500;0,600;0,700;1,400&family=VT323&display=swap" rel="stylesheet">
   </head>
-  <body class="bg-[#f4f3ef] text-[#1c1b18] antialiased selection:bg-[#2563eb] selection:text-white min-h-screen">
-    <div id="root"></div>
+  <body class="bg-[#f5f4ef] dark:bg-[#141311] text-[#1c1b18] dark:text-[#e6e4dc] antialiased selection:bg-[#2563eb] selection:text-white min-h-screen">
+    <div id="root">
+      <div style="font-family:'Courier Prime',monospace;display:flex;align-items:center;justify-content:center;min-height:100vh;flex-direction:column;padding:24px;text-align:center;">
+        <div style="width:48px;height:48px;background:#2b2a27;color:#fff;display:flex;align-items:center;justify-content:center;font-size:24px;font-weight:bold;margin-bottom:16px;box-shadow:3px 3px 0px #000;">
+          ∑
+        </div>
+        <div style="font-size:18px;font-weight:bold;letter-spacing:0.1em;margin-bottom:8px;">MATH REVIEWER</div>
+        <div style="font-size:12px;color:#666;">INITIALIZING SYSTEM...</div>
+      </div>
+    </div>
     <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>

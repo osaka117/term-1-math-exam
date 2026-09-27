@@ -71,48 +71,48 @@ export const PracticeQuestionScreen: React.FC<Props> = ({
   return (
     <div className="max-w-3xl mx-auto px-4 py-6 sm:py-8">
       {/* Control Bar: Topic & Difficulty Selectors */}
-      <div className="retro-box p-3 sm:p-4 bg-[#f8f7f2] mb-5 space-y-3">
+      <div className="retro-box p-3 sm:p-4 bg-[#f8f7f2] dark:bg-[#1c1b18] mb-5 space-y-3">
         {/* Row 1: Topic Switcher */}
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2.5">
           <div className="flex items-center gap-2 flex-1 min-w-0">
-            <span className="font-mono text-xs font-bold text-[#2b2a27] shrink-0 tracking-wider">
+            <span className="font-mono text-xs font-bold text-[#2b2a27] dark:text-[#d4d2c9] shrink-0 tracking-wider">
               TOPIC:
             </span>
             <div className="relative flex-1 min-w-0">
               <select
                 value={activeTopicId}
                 onChange={handleTopicSelectChange}
-                className="w-full font-mono text-xs font-bold border-2 border-[#2b2a27] bg-white px-2.5 py-1.5 text-[#1c1b18] cursor-pointer appearance-none pr-8 focus:outline-none focus:border-blue-600 truncate"
+                className="w-full font-mono text-xs font-bold border-2 border-[#2b2a27] dark:border-[#4a4943] bg-white dark:bg-[#252420] px-2.5 py-1.5 text-[#1c1b18] dark:text-[#e6e4dc] cursor-pointer appearance-none pr-8 focus:outline-none focus:border-blue-600 truncate"
                 title="Switch topic midway"
               >
                 {TOPICS.map((t) => (
-                  <option key={t.id} value={t.id}>
+                  <option key={t.id} value={t.id} className="bg-white dark:bg-[#252420] text-[#1c1b18] dark:text-[#e6e4dc]">
                     {t.name}
                   </option>
                 ))}
               </select>
-              <ChevronDown className="w-4 h-4 text-[#555] absolute right-2.5 top-1/2 -translate-y-1/2 pointer-events-none" />
+              <ChevronDown className="w-4 h-4 text-[#555] dark:text-[#aaa] absolute right-2.5 top-1/2 -translate-y-1/2 pointer-events-none" />
             </div>
           </div>
 
           <div className="flex items-center gap-2 shrink-0">
             <button
               onClick={onOpenTopicPicker}
-              className="retro-button px-2.5 py-1 bg-white text-xs font-mono font-semibold text-[#1c1b18] hover:bg-[#fafaf7] flex items-center gap-1 cursor-pointer"
+              className="retro-button px-2.5 py-1 bg-white dark:bg-[#252420] text-xs font-mono font-semibold text-[#1c1b18] dark:text-[#e6e4dc] hover:bg-[#fafaf7] dark:hover:bg-[#2e2d28] flex items-center gap-1 cursor-pointer"
               title="Browse all 8 topics"
             >
               <ListFilter className="w-3.5 h-3.5" />
               <span>ALL TOPICS</span>
             </button>
-            <span className="font-mono text-xs text-[#555] bg-white px-2.5 py-1 border border-[#ccc]">
+            <span className="font-mono text-xs text-[#555] dark:text-[#a09e97] bg-white dark:bg-[#252420] px-2.5 py-1 border border-[#ccc] dark:border-[#444]">
               Q #{questionNumber}
             </span>
           </div>
         </div>
 
         {/* Row 2: Difficulty Selection */}
-        <div className="flex flex-wrap items-center gap-2 pt-2 border-t border-[#e2e0d8]">
-          <span className="font-mono text-xs font-bold text-[#2b2a27] shrink-0 tracking-wider">
+        <div className="flex flex-wrap items-center gap-2 pt-2 border-t border-[#e2e0d8] dark:border-[#33312c]">
+          <span className="font-mono text-xs font-bold text-[#2b2a27] dark:text-[#d4d2c9] shrink-0 tracking-wider">
             DIFFICULTY:
           </span>
           <div className="flex flex-wrap gap-1">
@@ -126,8 +126,8 @@ export const PracticeQuestionScreen: React.FC<Props> = ({
                   title={btn.tooltip}
                   className={`px-2.5 py-1 text-xs font-mono font-bold border transition-all cursor-pointer ${
                     isActive
-                      ? 'border-[#2b2a27] bg-[#2b2a27] text-white shadow-xs'
-                      : 'border-[#2b2a27] bg-white text-[#1c1b18] hover:bg-[#eae8e0]'
+                      ? 'border-[#2b2a27] bg-[#2b2a27] text-white dark:bg-[#e6e4dc] dark:text-[#181715] dark:border-[#e6e4dc] shadow-xs'
+                      : 'border-[#2b2a27] dark:border-[#444] bg-white dark:bg-[#252420] text-[#1c1b18] dark:text-[#e6e4dc] hover:bg-[#eae8e0] dark:hover:bg-[#302f2a]'
                   }`}
                 >
                   {btn.label}
@@ -139,27 +139,27 @@ export const PracticeQuestionScreen: React.FC<Props> = ({
       </div>
 
       {/* Main Question Box */}
-      <div className="retro-box p-5 sm:p-7 bg-white mb-6">
+      <div className="retro-box p-5 sm:p-7 bg-white dark:bg-[#1a1916] mb-6">
         {/* Topic Header & Level Badge */}
-        <div className="flex flex-wrap items-center justify-between gap-2 border-b border-[#2b2a27] pb-3 mb-5">
+        <div className="flex flex-wrap items-center justify-between gap-2 border-b border-[#2b2a27] dark:border-[#383733] pb-3 mb-5">
           <span className="px-2.5 py-0.5 bg-[#2563eb] text-white font-mono text-xs font-bold tracking-wider">
             {question.topicName}
           </span>
-          <span className="font-mono text-xs font-semibold px-2 py-0.5 border border-[#2b2a27] bg-[#f5f4ef] text-[#2b2a27]">
+          <span className="font-mono text-xs font-semibold px-2 py-0.5 border border-[#2b2a27] dark:border-[#444] bg-[#f5f4ef] dark:bg-[#252420] text-[#2b2a27] dark:text-[#e6e4dc]">
             {diffInfo.label}
           </span>
         </div>
 
         {/* Question Prompt */}
         <div className="mb-5">
-          <h2 className="text-base sm:text-lg font-mono font-medium text-[#1c1b18] whitespace-pre-line leading-relaxed">
+          <h2 className="text-base sm:text-lg font-mono font-medium text-[#1c1b18] dark:text-[#f3f1ea] whitespace-pre-line leading-relaxed">
             {question.prompt}
           </h2>
         </div>
 
         {/* Visual Diagram if available */}
         {question.diagramType !== 'none' && question.diagramData && (
-          <div className="my-4 p-2 bg-[#faf9f6] border border-[#e2e0d8]">
+          <div className="my-4 p-2 bg-[#faf9f6] dark:bg-[#151412] border border-[#e2e0d8] dark:border-[#33312c]">
             <DiagramRenderer type={question.diagramType} data={question.diagramData} />
           </div>
         )}
@@ -168,18 +168,18 @@ export const PracticeQuestionScreen: React.FC<Props> = ({
         <div className="space-y-3 mb-6">
           {question.options.map((opt) => {
             const isSelected = selectedOptionId === opt.id;
-            let optStyle = 'border-[#2b2a27] bg-white hover:bg-[#faf9f5]';
+            let optStyle = 'border-[#2b2a27] dark:border-[#444] bg-white dark:bg-[#22211e] hover:bg-[#faf9f5] dark:hover:bg-[#282723]';
 
             if (isSubmitted) {
               if (opt.id === question.correctOptionId) {
-                optStyle = 'border-[#15803d] bg-[#f0fdf4] text-[#15803d] font-bold';
+                optStyle = 'border-[#15803d] dark:border-[#22c55e] bg-[#f0fdf4] dark:bg-[#052e16] text-[#15803d] dark:text-[#4ade80] font-bold';
               } else if (isSelected && !isCorrect) {
-                optStyle = 'border-[#b91c1c] bg-[#fef2f2] text-[#b91c1c] line-through';
+                optStyle = 'border-[#b91c1c] dark:border-[#ef4444] bg-[#fef2f2] dark:bg-[#450a0a] text-[#b91c1c] dark:text-[#f87171] line-through';
               } else {
-                optStyle = 'border-[#d5d3cb] bg-[#fafaf8] opacity-60';
+                optStyle = 'border-[#d5d3cb] dark:border-[#333] bg-[#fafaf8] dark:bg-[#171614] opacity-50';
               }
             } else if (isSelected) {
-              optStyle = 'border-[#2563eb] bg-[#eff6ff] shadow-sm';
+              optStyle = 'border-[#2563eb] dark:border-[#3b82f6] bg-[#eff6ff] dark:bg-[#172554] shadow-sm';
             }
 
             return (
@@ -193,13 +193,13 @@ export const PracticeQuestionScreen: React.FC<Props> = ({
                 <span
                   className={`w-6 h-6 shrink-0 flex items-center justify-center font-mono font-bold text-xs border ${
                     isSelected
-                      ? 'bg-[#2b2a27] text-white border-[#2b2a27]'
-                      : 'bg-[#f4f3ef] text-[#1c1b18] border-[#2b2a27]'
+                      ? 'bg-[#2b2a27] text-white border-[#2b2a27] dark:bg-[#3b82f6] dark:border-[#3b82f6]'
+                      : 'bg-[#f4f3ef] text-[#1c1b18] border-[#2b2a27] dark:bg-[#2a2925] dark:text-[#e6e4dc] dark:border-[#444]'
                   }`}
                 >
                   {opt.id}
                 </span>
-                <span className="font-mono text-sm leading-relaxed text-[#1c1b18] flex-1">
+                <span className="font-mono text-sm leading-relaxed text-[#1c1b18] dark:text-[#e6e4dc] flex-1">
                   {opt.text}
                 </span>
               </button>
@@ -209,7 +209,7 @@ export const PracticeQuestionScreen: React.FC<Props> = ({
 
         {/* Submit or Next Button */}
         {!isSubmitted ? (
-          <div className="pt-4 border-t border-[#e2e0d8] flex justify-end">
+          <div className="pt-4 border-t border-[#e2e0d8] dark:border-[#333] flex justify-end">
             <button
               onClick={handleSubmit}
               disabled={!selectedOptionId}
@@ -219,13 +219,13 @@ export const PracticeQuestionScreen: React.FC<Props> = ({
             </button>
           </div>
         ) : (
-          <div className="space-y-4 pt-4 border-t-2 border-[#2b2a27]">
+          <div className="space-y-4 pt-4 border-t-2 border-[#2b2a27] dark:border-[#444]">
             {/* Feedback Status Banner */}
             <div
               className={`p-4 border-2 flex items-center justify-between gap-3 ${
                 isCorrect
-                  ? 'border-[#15803d] bg-[#f0fdf4] text-[#15803d]'
-                  : 'border-[#b91c1c] bg-[#fef2f2] text-[#b91c1c]'
+                  ? 'border-[#15803d] dark:border-[#22c55e] bg-[#f0fdf4] dark:bg-[#052e16] text-[#15803d] dark:text-[#4ade80]'
+                  : 'border-[#b91c1c] dark:border-[#ef4444] bg-[#fef2f2] dark:bg-[#450a0a] text-[#b91c1c] dark:text-[#f87171]'
               }`}
             >
               <div className="flex items-center gap-2.5">
@@ -246,7 +246,7 @@ export const PracticeQuestionScreen: React.FC<Props> = ({
 
               <button
                 onClick={handleNext}
-                className="px-5 py-2 retro-button bg-[#2b2a27] text-white font-mono text-xs font-bold flex items-center gap-1.5 cursor-pointer shrink-0"
+                className="px-5 py-2 retro-button bg-[#2b2a27] dark:bg-[#e6e4dc] text-white dark:text-[#181715] font-mono text-xs font-bold flex items-center gap-1.5 cursor-pointer shrink-0"
               >
                 <span>NEXT QUESTION</span>
                 <ArrowRight className="w-3.5 h-3.5" />
@@ -254,20 +254,20 @@ export const PracticeQuestionScreen: React.FC<Props> = ({
             </div>
 
             {/* Step-by-Step Mathematical Explanation */}
-            <div className="retro-box-sm p-4 bg-[#faf9f5]">
-              <h5 className="font-mono font-bold text-xs uppercase tracking-wider text-[#2b2a27] mb-2 border-b border-[#e2e0d8] pb-1">
+            <div className="retro-box-sm p-4 bg-[#faf9f5] dark:bg-[#201f1c]">
+              <h5 className="font-mono font-bold text-xs uppercase tracking-wider text-[#2b2a27] dark:text-[#e6e4dc] mb-2 border-b border-[#e2e0d8] dark:border-[#383733] pb-1">
                 STEP-BY-STEP MATHEMATICAL SOLUTION
               </h5>
-              <div className="font-mono text-xs text-[#333] whitespace-pre-line leading-relaxed mb-3">
+              <div className="font-mono text-xs text-[#333] dark:text-[#d1cfc7] whitespace-pre-line leading-relaxed mb-3">
                 {question.explanation}
               </div>
 
               {question.steps && question.steps.length > 0 && (
-                <div className="bg-white p-3 border border-[#d8d6cc]">
-                  <span className="font-mono text-[11px] font-bold text-[#555] block mb-1.5 uppercase">
+                <div className="bg-white dark:bg-[#171614] p-3 border border-[#d8d6cc] dark:border-[#383733]">
+                  <span className="font-mono text-[11px] font-bold text-[#555] dark:text-[#a09e97] block mb-1.5 uppercase">
                     Key Calculation Steps:
                   </span>
-                  <ol className="list-decimal list-inside space-y-1 text-xs font-mono text-[#222]">
+                  <ol className="list-decimal list-inside space-y-1 text-xs font-mono text-[#222] dark:text-[#dcdad2]">
                     {question.steps.map((st, idx) => (
                       <li key={idx} className="leading-snug">
                         {st}

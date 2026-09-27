@@ -5,7 +5,13 @@
     font-family: 'IBM Plex Mono', 'Courier Prime', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
     background-color: #f5f4ef;
     color: #1e1d1a;
+    transition: background-color 0.2s ease, color 0.2s ease;
   }
+}
+
+.dark body {
+  background-color: #141311;
+  color: #e6e4dc;
 }
 
 .font-terminal {
@@ -24,16 +30,37 @@
   background-color: #ffffff;
 }
 
+.dark .retro-box {
+  border-color: #4a4943;
+  box-shadow: 3px 3px 0px #0c0c0b;
+  background-color: #1d1c19;
+  color: #e6e4dc;
+}
+
 .retro-box-sm {
   border: 1.5px solid #2b2a27;
   box-shadow: 2px 2px 0px #2b2a27;
   background-color: #ffffff;
 }
 
+.dark .retro-box-sm {
+  border-color: #4a4943;
+  box-shadow: 2px 2px 0px #0c0c0b;
+  background-color: #1d1c19;
+  color: #e6e4dc;
+}
+
 .retro-box-inset {
   border: 2px solid #3c3a35;
   box-shadow: inset 2px 2px 0px rgba(0, 0, 0, 0.12);
   background-color: #fdfdfc;
+}
+
+.dark .retro-box-inset {
+  border-color: #44423c;
+  box-shadow: inset 2px 2px 0px rgba(0, 0, 0, 0.5);
+  background-color: #161513;
+  color: #e6e4dc;
 }
 
 .retro-button {
@@ -44,9 +71,21 @@
   font-weight: 600;
 }
 
+.dark .retro-button {
+  border-color: #55534c;
+  box-shadow: 3px 3px 0px #0c0c0b;
+  background-color: #242320;
+  color: #e6e4dc;
+}
+
 .retro-button:hover:not(:disabled) {
   transform: translate(-1px, -1px);
   box-shadow: 4px 4px 0px #2b2a27;
+}
+
+.dark .retro-button:hover:not(:disabled) {
+  box-shadow: 4px 4px 0px #0c0c0b;
+  background-color: #2c2b27;
 }
 
 .retro-button:active:not(:disabled) {
@@ -54,9 +93,19 @@
   box-shadow: 1px 1px 0px #2b2a27;
 }
 
+.dark .retro-button:active:not(:disabled) {
+  box-shadow: 1px 1px 0px #0c0c0b;
+}
+
 .retro-button:disabled {
   opacity: 0.5;
   cursor: not-allowed;
   box-shadow: 2px 2px 0px #777672;
   border-color: #777672;
+}
+
+.dark .retro-button:disabled {
+  opacity: 0.4;
+  box-shadow: 2px 2px 0px #2a2926;
+  border-color: #383733;
 }

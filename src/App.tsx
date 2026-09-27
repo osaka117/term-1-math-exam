@@ -28,8 +28,38 @@ const STORAGE_KEY_ACTIVE_TOPIC = 'math_reviewer_active_topic';
 const STORAGE_KEY_ACTIVE_DIFF = 'math_reviewer_active_diff';
 const STORAGE_KEY_MOCK_CONFIG = 'math_reviewer_mock_config';
 const STORAGE_KEY_MOCK_ACTIVE = 'math_reviewer_mock_active';
+const STORAGE_KEY_THEME = 'math_reviewer_theme';
 
 export default function App() {
+  // Theme state
+  const [isDarkMode, setIsDarkMode] = useState<boolean>(() => {
+    try {
+      const savedTheme = localStorage.getItem(STORAGE_KEY_THEME);
+      if (savedTheme === 'dark') return true;
+      if (savedTheme === 'light') return false;
+      return window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+    } catch (e) {
+      return false;
+    }
+  });
+
+  // Sync dark class on documentElement and body
+  useEffect(() => {
+    try {
+      if (isDarkMode) {
+        document.documentElement.classList.add('dark');
+        localStorage.setItem(STORAGE_KEY_THEME, 'dark');
+      } else {
+        document.documentElement.classList.remove('dark');
+        localStorage.setItem(STORAGE_KEY_THEME, 'light');
+      }
+    } catch (e) {
+      // ignore
+    }
+  }, [isDarkMode]);
+
+  const toggleDarkMode = () => setIsDarkMode((prev) => !prev);
+
   // Practice mode is the home page
   const [currentView, setCurrentView] = useState<AppView>('practice');
 
@@ -273,11 +303,13 @@ export default function App() {
   };
 
   return (
-    <div className="min-h-screen flex flex-col bg-[#f5f4ef] text-[#1c1b18]">
+    <div className={`min-h-screen flex flex-col transition-colors duration-200 ${isDarkMode ? 'dark bg-[#141311] text-[#e6e4dc]' : 'bg-[#f5f4ef] text-[#1c1b18]'}`}>
       {/* Navigation Header */}
       <Header
         currentView={currentView}
         onNavigate={(view) => setCurrentView(view)}
+        isDarkMode={isDarkMode}
+        onToggleDarkMode={toggleDarkMode}
       />
 
       {/* Main Content Area */}
@@ -333,7 +365,7 @@ export default function App() {
       </main>
 
       {/* Clean Footer */}
-      <footer className="border-t border-[#d8d6cc] bg-[#eeeae0] py-3 text-center text-xs font-mono text-[#666]">
+      <footer className="border-t border-[#d8d6cc] dark:border-[#383733] bg-[#eeeae0] dark:bg-[#181715] py-3 text-center text-xs font-mono text-[#666] dark:text-[#a09e97]">
         <div className="max-w-4xl mx-auto px-4 flex flex-wrap items-center justify-between gap-2">
           <span>MATH REVIEWER</span>
           <span>STATIC SPA</span>
