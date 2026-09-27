@@ -144,13 +144,6 @@ export const MockTestQuestionScreen: React.FC<Props> = ({
           </h2>
         </div>
 
-        {/* Diagram if any */}
-        {currentQ.diagramType !== 'none' && currentQ.diagramData && (
-          <div className="my-4 p-2 bg-[#faf9f6] dark:bg-[#151412] border border-[#e2e0d8] dark:border-[#33312c]">
-            <DiagramRenderer type={currentQ.diagramType} data={currentQ.diagramData} />
-          </div>
-        )}
-
         {/* Options */}
         <div className="space-y-3 mb-8">
           {currentQ.options.map((opt) => {

@@ -157,13 +157,6 @@ export const PracticeQuestionScreen: React.FC<Props> = ({
           </h2>
         </div>
 
-        {/* Visual Diagram if available */}
-        {question.diagramType !== 'none' && question.diagramData && (
-          <div className="my-4 p-2 bg-[#faf9f6] dark:bg-[#151412] border border-[#e2e0d8] dark:border-[#33312c]">
-            <DiagramRenderer type={question.diagramType} data={question.diagramData} />
-          </div>
-        )}
-
         {/* Multiple Choice Options */}
         <div className="space-y-3 mb-6">
           {question.options.map((opt) => {
@@ -258,6 +251,17 @@ export const PracticeQuestionScreen: React.FC<Props> = ({
               <h5 className="font-mono font-bold text-xs uppercase tracking-wider text-[#2b2a27] dark:text-[#e6e4dc] mb-2 border-b border-[#e2e0d8] dark:border-[#383733] pb-1">
                 STEP-BY-STEP MATHEMATICAL SOLUTION
               </h5>
+
+              {/* Visual Diagram / Illustration shown after answering */}
+              {question.diagramType !== 'none' && question.diagramData && (
+                <div className="my-3 p-2 bg-[#ffffff] dark:bg-[#151412] border border-[#e2e0d8] dark:border-[#33312c]">
+                  <div className="text-[11px] font-mono font-bold text-[#555] dark:text-[#a09e97] mb-1.5 uppercase">
+                    Visual Solution Illustration:
+                  </div>
+                  <DiagramRenderer type={question.diagramType} data={question.diagramData} />
+                </div>
+              )}
+
               <div className="font-mono text-xs text-[#333] dark:text-[#d1cfc7] whitespace-pre-line leading-relaxed mb-3">
                 {question.explanation}
               </div>
