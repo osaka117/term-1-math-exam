@@ -1,0 +1,62 @@
+@import "tailwindcss";
+
+@layer base {
+  body {
+    font-family: 'IBM Plex Mono', 'Courier Prime', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+    background-color: #f5f4ef;
+    color: #1e1d1a;
+  }
+}
+
+.font-terminal {
+  font-family: 'VT323', monospace;
+  letter-spacing: 0.05em;
+}
+
+.font-math {
+  font-family: 'IBM Plex Mono', 'Courier Prime', monospace;
+}
+
+/* Retro border & box shadows inspired by classic educational software */
+.retro-box {
+  border: 2px solid #2b2a27;
+  box-shadow: 3px 3px 0px #2b2a27;
+  background-color: #ffffff;
+}
+
+.retro-box-sm {
+  border: 1.5px solid #2b2a27;
+  box-shadow: 2px 2px 0px #2b2a27;
+  background-color: #ffffff;
+}
+
+.retro-box-inset {
+  border: 2px solid #3c3a35;
+  box-shadow: inset 2px 2px 0px rgba(0, 0, 0, 0.12);
+  background-color: #fdfdfc;
+}
+
+.retro-button {
+  border: 2px solid #2b2a27;
+  box-shadow: 3px 3px 0px #2b2a27;
+  transition: all 0.08s ease;
+  font-family: 'IBM Plex Mono', monospace;
+  font-weight: 600;
+}
+
+.retro-button:hover:not(:disabled) {
+  transform: translate(-1px, -1px);
+  box-shadow: 4px 4px 0px #2b2a27;
+}
+
+.retro-button:active:not(:disabled) {
+  transform: translate(2px, 2px);
+  box-shadow: 1px 1px 0px #2b2a27;
+}
+
+.retro-button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  box-shadow: 2px 2px 0px #777672;
+  border-color: #777672;
+}

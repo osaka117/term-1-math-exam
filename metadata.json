@@ -1,0 +1,8 @@
+{
+  "name": "Math Reviewer",
+  "description": "A clean retro-styled mathematics practice and mock test reviewer covering transformations, trigonometry, inequalities, absolute value, and statistics.",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}
